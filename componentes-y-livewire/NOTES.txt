@@ -1,0 +1,64 @@
+***************************************
+
+Proyecto creado a manera de repaso de lo que se ha visto hasta el momento de temas de:
+-Tailwind en proyectos Laravel
+-Componentes de Blade (de clase y anónimos)
+-Inicio de Livewire
+
+
+Soluciones a diversos problemas al clonar, como pueden ser lo del .env, tabla "sessions", comandos necesarios, etc. consultarlas de otros repos relacionados a Laravel.
+*Recordar cambiarnos al directorio dentro del proyecto para todo ("cd .\componentes-y-livewire\")
+
+***************************************
+
+***************************************
+
+NOTA SOBRE ESTILOS TAILWIND: Si al ejecutar la aplicación no se ven cambios en colores en alerts según el valor que se le da a "color" en donde se llama al componente, ir moviéndole al front y donde está lo de "{{$color}}" cambiarlo por poner los colores ya directmente e ir cargando, ya luego volver a "{{$color}}" y ya los detectará (No se por qué pasa eso, ni por qué funciona esa solución pero así es)
+
+Para meter Tailwind en un proyecto de Laravel:
+
+Ya en proyecto creado de Laravel. O crear proyecto de Laravel (con comandos:
+"composer create-project laravel/laravel my-project"
+"cd my-project" )
+
+*Pasos de la documentación: https://tailwindcss.com/docs/guides/laravel
+
+-Ejecutar comandos del paso 2: 
+	npm install -D tailwindcss postcss autoprefixer
+	npx tailwindcss init -p
+
+-En archivo "tailwind.config.js" agregar dentro de "content[],": 
+	"./resources/**/*.blade.php",
+    	"./resources/**/*.js",
+    	"./resources/**/*.vue",
+    	"./public/**/*.js"
+
+-Creamos dentro de carpeta "public" en el proyecto otra carpeta llamada "css" y dentro un archivo llamado "app.css", dentro de ese archivo se agrega:
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+-Dentro de archivos donde se vaya a emplear Tailwind (o en su caso los archivos de vistas correspondientes a plantillas), dentro de <head> borrar la etiqueta <style> junto con todo su contenido ("/* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;...") que se genera en automático desde que se crea el proyecto de Laravel como tal (y que en teoría corresponde a la implementación de Tailwind en el proyecto). Y en su lugar colocar " @vite('public/css/app.css') "
+
+-Colocar dentro de alguna vista (que dentro contenga ya esa referencia a Tailwind, o que la plantilla que use (si es el caso) la tenga), y ya empezar a colocar algunos elementos que empleen Tailwind, que puede ser por ejemplo el que está de ejemplo en la documentación: "<h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>"
+
+-Para probar que funcione: abrir una terminal y ejecutar el comando "npm run dev", luego abrir otra terminal y ejecutar comando "php artisan serve"
+
+***************************************
+
+***************************************
+"php artisan make:component Alert"
+***************************************
+
+***************************************
+Creación de componente blade anónimo "alert2.blade.php" directamente creando archivo en resources/views/components
+***************************************
+
+***************************************
+"composer require livewire/livewire"
+"php artisan make:livewire counter"
+
+
+***************************************
