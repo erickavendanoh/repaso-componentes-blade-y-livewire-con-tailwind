@@ -62,3 +62,23 @@ Creación de componente blade anónimo "alert2.blade.php" directamente creando a
 
 
 ***************************************
+
+
+***************************************
+Falto mostrar este caso en algún archivo .blade.php:
+
+<!-- Para asignarle a un parámetro de un componente de blade su valor en base a una variable (en este caso de php). Esto ya puede servir por ejemplo para cuando se tenga que recuperar la info de una BD y se alamcene en cierta variable y esa variable ya se emplee para darle el valor al parámetro del componente de blade -->
+        @php
+            $color = 'yellow'; //Por ahora hardcodeado, pero ya en un ámbito más real el valor de esta variable podría ser recuperado de una BD
+        @endphp
+        <x-alert :color="$color">
+            <!--Se pone así, el parámetro con ":" antes y se le asigna su valor, que en este caso es la variable encerrada dentro de ""-->
+            <x-slot name="title">
+                Titulo 3
+            </x-slot>
+
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio ad expedita, cumque eligendi nulla excepturi
+            recusandae reiciendis repellendus cupiditate ut, quisquam deserunt commodi incidunt delectus eum quas,
+            officiis itaque aperiam.
+        </x-alert>
+***************************************
